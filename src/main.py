@@ -1,5 +1,8 @@
 import flet as ft
 import requests
+import os
+
+port = int(os.environ.get("PORT", 8080))
 
 # def verificar_conexão():
 #     endereco_API = "https://api.dicionario-aberto.net/"
@@ -144,4 +147,5 @@ def main(page: ft.Page):
 
 
 # ft.app(target=main)
-ft.app(target=main, view=ft.WEB_BROWSER)
+# ft.app(target=main, view=ft.WEB_BROWSER)
+ft.app(target=main, port=port, view=None)  
