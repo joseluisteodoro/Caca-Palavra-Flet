@@ -147,6 +147,9 @@ def main(page: ft.Page):
 
 
 
-# ft.app(target=main)
-# ft.app(target=main, view=ft.WEB_BROWSER)
-ft.app(target=main, port=port, view=None)  
+if os.environ.get("FLET_RUNTIME") == "app":
+    ft.app(target=main)  # App desktop (build com flet build)
+elif os.environ.get("RENDER") == "true" or os.environ.get("PORT"):
+    ft.app(target=main, port=port, view=None)  # Render.com
+else:
+    ft.app(target=main, view=ft.WEB_BROWSER)  # Execução local no navegador
